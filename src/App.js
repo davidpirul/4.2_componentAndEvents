@@ -1,24 +1,42 @@
-import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Input from './components/Input.js';
+import ShowButton from './components/ShowButton';
+import { useState } from 'react'
+
 
 function App() {
+
+  const [showButton, setShowButton] = useState('');
+  console.log(setShowButton)
+
+  const passCode = e => setShowButton(e.target.value)
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div className='App'>
+      <div className='container'>
+        <div className='inputGroup'>
+          <Input
+            control='formBasicEmail'
+            text='User'
+            type='user'
+            placeholder='Enter user name'
+          />
+          <Input
+            control='formBasicPassword'
+            text='Password'
+            type='password'
+            placeholder='Password'
+            onChange={passCode}
+          />
+          <div>
+            {showButton === '252525' ? <ShowButton /> : null}
+          </div>
+        </div>
+      </div>
+    </div >
+
   );
 }
 
